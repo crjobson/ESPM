@@ -1,0 +1,57 @@
+{
+  "routes": [
+  	{
+      "path": "/mobileservices",
+      "target": {
+        "type": "destination",
+        "name": "SAP_C2G",
+        "entryPath": "mobileservices"
+      },
+      "description": "SAP_C2G"
+    },
+    {
+      "path": "/webapp/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources"
+      },
+      "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/ESPM",
+      "target": {
+        "type": "destination",
+        "name": "ESPM"
+      },
+      "description": "ESPM"
+    }
+  ]
+}
