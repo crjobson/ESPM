@@ -12,3 +12,4 @@ changes_preview.js
 /dist/
 .project.json
 /.project.json
+/.user.project.json
