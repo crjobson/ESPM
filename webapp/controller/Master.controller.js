@@ -56,6 +56,28 @@ sap.ui.define([
 
 				this.getRouter().getRoute("master").attachPatternMatched(this._onMasterMatched, this);
 				this.getRouter().attachBypassed(this.onBypassed, this);
+				
+				var oButton2 = new sap.m.Button("Save", {
+                    text: "Save",
+            	    press: this.onSetC2GSavePress
+        	    });
+            	var oButton3 = new sap.m.Button("Cancel", {
+                    text: "Cancel",
+                    press: this.onSetC2GCancelPress
+            	});
+				var oDialog = new sap.m.Dialog("Dialog1",{
+                    title:"Dialog",
+                    modal: true,
+                    contentWidth:"1em",
+                    buttons: [oButton2, oButton3],
+                    content:[
+						new sap.m.Label({text:"Template ID"}),
+						new sap.m.Input({
+							maxLength: 36,
+							id: "TemplateID"
+                		})
+                    ]
+            	});
 			},
 
 			/* =========================================================== */
@@ -159,6 +181,22 @@ sap.ui.define([
 				history.go(-1);
 			},
 
+			onSetC2GSavePress: function () {
+				var sTemplateID = sap.ui.getCore().byId("TemplateID").getValue();
+				
+				sap.ui.getCore().getModel("global").setProperty("/templateID", sTemplateID);
+				
+				sap.ui.getCore().byId("Dialog1").close();
+			},
+
+			onSetC2GCancelPress: function () {
+				sap.ui.getCore().byId("Dialog1").close();
+			},
+			
+			onSetC2GTemplatePress: function() {
+             sap.ui.getCore().byId("Dialog1").open();
+			},
+			
 			/* =========================================================== */
 			/* begin: internal methods                                     */
 			/* =========================================================== */
