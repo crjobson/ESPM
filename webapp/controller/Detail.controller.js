@@ -57,11 +57,15 @@ sap.ui.define([
 					return;
 				}
 				
+				var oGlobalModel = sap.ui.getCore().getModel("global");
+				var sUsername = oGlobalModel.getProperty("/username");
+				
 				var sPath = this.getView().getElementBinding().getPath();
 				
 				var url = "/mobileservices/origin/hcpms/CARDS/v1/cardTypes/" + sCardTypeGUID + "/cardInstances";
 				var bodyJson = {
-				  "resourceIdentifiers": [{"uri": "/SampleServices/ESPM.svc" + sPath + "?$expand=Products"}]
+				  "resourceIdentifiers": [{"uri": "/SampleServices/ESPM.svc" + sPath + "?$expand=Products"}],
+				  "username": sUsername
 				};
 				
 				jQuery.ajax({
@@ -77,12 +81,18 @@ sap.ui.define([
 							sap.m.MessageToast.show("Successfully added Card");
 						} else if (xhr.status === 200) {
 							sap.m.MessageToast.show("Card has already been added");
+						} else if (xhr.status === 409) {
+							sap.m.MessageToast.show("Card has already been added");
 						} else {
 							sap.m.MessageToast.show("This Card cannot be added");
 						}
 					},
 					error : function(xhr, textStatus, error) {
-						sap.m.MessageToast.show("This Card cannot be added");
+						if (xhr.status === 409) {
+							sap.m.MessageToast.show("Card has already been added");
+						} else {
+							sap.m.MessageToast.show("This Card cannot be added");
+						}
 					}
 				});
 			},

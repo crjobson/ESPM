@@ -46,6 +46,14 @@
       "description": "SAPUI5 Test Resources"
     },
     {
+		"path": "/services/userapi",
+		"target": {
+			"type": "service",
+			"name": "userapi"
+		},
+		"description": "User API"
+	},
+    {
       "path": "/ESPM",
       "target": {
         "type": "destination",
